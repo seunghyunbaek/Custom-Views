@@ -26,8 +26,7 @@ class LinedEditText(context: Context, attrs: AttributeSet) : EditText(context, a
     // onDraw에서는 개발자가 원하는대로 구현할 수 있는 canvas가 제공한다.
     // 단, 3D 그래픽에는 적용되지 않으며, View대신 SurfaceView를 상속하여 별도의 쓰레드에서 그려야 한다.
     override fun onDraw(canvas: Canvas?) {
-        // View안의 텍스트의 라인수가 몇개인지 가져온다.
-        var count:Int = lineCount // getLineCount -> TextView의 정의되어 있는 method
+        var count:Int = lineCount // View안의 텍스트의 라인수가 몇개인지 가져온다.
         val r = mRect
         val paint = mPaint
 
@@ -37,7 +36,8 @@ class LinedEditText(context: Context, attrs: AttributeSet) : EditText(context, a
             val baseline = getLineBounds(i, r) // getLineBounds
 
             // Paint객체를 이용하여 밑줄을 그린다.
-            canvas!!.drawLine(r!!.left.toFloat(), (baseline+1).toFloat(), r.right.toFloat(), (baseline+1).toFloat(), paint!!)
+            // 밑줄과 글이 가까이 붙어 Y값을 키워준다. (baseline+7)
+            canvas!!.drawLine(r!!.left.toFloat(), (baseline+7).toFloat(), r.right.toFloat(), (baseline+7).toFloat(), paint!!)
         }
 
         // super.onDraw()를 호출하며 마무리를 짓는다.

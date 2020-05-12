@@ -1,6 +1,7 @@
 package bset.hyun.customviews
 
 import android.content.Context
+import android.content.res.TypedArray
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
@@ -12,6 +13,8 @@ class LinedEditText(context: Context, attrs: AttributeSet) : EditText(context, a
     private var mRect: Rect? = null
     private var mPaint: Paint? = null
 
+    private var initKey:Boolean = true
+
     init {
         mRect = Rect()
         mPaint = Paint()
@@ -20,6 +23,22 @@ class LinedEditText(context: Context, attrs: AttributeSet) : EditText(context, a
             style = Paint.Style.STROKE // 선
             strokeWidth = 2f // 2f 굵기
             color = Color.BLACK // 선 색상
+        }
+
+        // 커스텀 속성을 정의한 파일에서 커스텀 속성 가져오기
+        // defStyleAttr을 0으로 작성하면
+        val a:TypedArray = context.theme.obtainStyledAttributes(
+            attrs,
+            R.styleable.LinedEditText,
+            0, 0
+        )
+
+        try {
+            // 해당 커스텀 속성의 타입에 맞게 get을 사용한다.
+            initKey = a.getBoolean(R.styleable.LinedEditText_initKey, false)
+        } finally {
+            // release the TypedArray so that it can be reused.
+            a.recycle() // TypedArray를 모두 사용했으면 반드시 recycle()을 call해야 한다.
         }
     }
 
@@ -42,5 +61,10 @@ class LinedEditText(context: Context, attrs: AttributeSet) : EditText(context, a
 
         // super.onDraw()를 호출하며 마무리를 짓는다.
         super.onDraw(canvas)
+    }
+
+    fun clickInitKey(){
+        if(initKey)
+            text.clear()
     }
 }

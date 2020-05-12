@@ -8,16 +8,37 @@
     tools:context=".MainActivity">
 
     <bset.hyun.customviews.LinedEditText
+    android:id="@+id/linedEdit"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="50dp"
+    android:layout_marginTop="100dp"
+    android:layout_marginRight="50dp"
+    android:background="@android:color/transparent"
+    android:hint="LinedEditText"
+    android:textCursorDrawable="@drawable/cursor_lined"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:initKey="true"/>
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="clear"
+        android:textAllCaps="false"
+        app:layout_constraintLeft_toLeftOf="@id/linedEdit"
+        app:layout_constraintTop_toBottomOf="@id/linedEdit" />
+
+    <bset.hyun.customviews.CustomView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginRight="50dp"
-        android:background="@android:color/transparent"
-        android:hint="LinedEditText"
-        android:textCursorDrawable="@drawable/cursor_lined"
+        app:boolKey="true"
+        app:intKey="1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/btn"
+        app:stringKey="CustomView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

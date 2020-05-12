@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<declare-styleable name="CustomView">
+    <attr name="boolKey" format="boolean"/>
+    <attr name="intKey" format="integer"/>
+    <attr name="stringKey" format="string"/>
+</declare-styleable>
+
+<declare-styleable name="LinedEditText">
+    <attr name="initKey" format="boolean"/>
+    <attr name="initKeee" format="boolean"/>
+</declare-styleable>
+
+</resources>
